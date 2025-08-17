@@ -1,6 +1,8 @@
 - sections:
   - local: index
     title: Transformers
+  - local: technical_architecture
+    title: Technical Architecture
   - local: installation
     title: Installation
   - local: quicktour
