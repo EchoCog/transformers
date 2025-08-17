@@ -78,6 +78,104 @@ There are over 1M+ Transformers [model checkpoints](https://huggingface.co/model
 
 Explore the [Hub](https://huggingface.com/) today to find a model and use Transformers to help you get started right away.
 
+## 🏗️ Technical Architecture
+
+Transformers is designed with a unified, modular architecture that supports 360+ model implementations across multiple domains. The library follows a layered design pattern that promotes code reuse, consistency, and extensibility.
+
+```mermaid
+graph TB
+    subgraph "🤗 Transformers Ecosystem"
+        subgraph "User Interface Layer"
+            Pipeline[🚀 Pipeline API<br/>High-level inference]
+            AutoClasses[🔧 Auto Classes<br/>Model/Tokenizer loading]
+            Trainer[📚 Trainer<br/>Training & fine-tuning]
+        end
+        
+        subgraph "Core Components"
+            Models[🧠 Models<br/>360+ implementations]
+            Tokenizers[📝 Tokenizers<br/>Text preprocessing]
+            Processors[🎛️ Processors<br/>Multimodal preprocessing]
+            Config[⚙️ Configuration<br/>Model settings]
+        end
+        
+        subgraph "Backend Frameworks"
+            PyTorch[🔥 PyTorch<br/>Primary backend]
+            TensorFlow[🧮 TensorFlow<br/>Alternative backend]
+            JAX[⚡ JAX/Flax<br/>High-performance backend]
+        end
+        
+        subgraph "Model Categories"
+            NLP[📖 NLP Models<br/>BERT, GPT, T5, etc.]
+            Vision[👁️ Vision Models<br/>ViT, DINO, CLIP, etc.]
+            Audio[🎵 Audio Models<br/>Whisper, Wav2Vec2, etc.]
+            Multimodal[🌐 Multimodal<br/>LLaVA, BLIP, etc.]
+        end
+    end
+    
+    subgraph "External Ecosystem"
+        HubModels[🏪 Hugging Face Hub<br/>1M+ checkpoints]
+        TrainingFW[🚂 Training Frameworks<br/>Axolotl, Unsloth, DeepSpeed]
+        InferenceEng[⚡ Inference Engines<br/>vLLM, TGI, SGLang]
+        Libraries[📚 Adjacent Libraries<br/>llama.cpp, MLX, etc.]
+    end
+    
+    Pipeline --> Models
+    AutoClasses --> Models
+    AutoClasses --> Tokenizers
+    AutoClasses --> Config
+    Trainer --> Models
+    
+    Models --> PyTorch
+    Models --> TensorFlow
+    Models --> JAX
+    
+    Models --> NLP
+    Models --> Vision
+    Models --> Audio
+    Models --> Multimodal
+    
+    Tokenizers --> NLP
+    Processors --> Vision
+    Processors --> Audio
+    Processors --> Multimodal
+    
+    HubModels --> AutoClasses
+    Models --> TrainingFW
+    Models --> InferenceEng
+    Models --> Libraries
+    
+    style Pipeline fill:#e1f5fe
+    style Models fill:#f3e5f5
+    style HubModels fill:#e8f5e8
+```
+
+### 🔧 Core Design Principles
+
+1. **Unified API**: All 360+ models share the same interface pattern with three core classes:
+   - **Configuration**: Model hyperparameters and settings
+   - **Model**: The actual neural network implementation  
+   - **Preprocessor**: Input preprocessing (tokenizers, processors, feature extractors)
+
+2. **Framework Agnostic**: Models work seamlessly across PyTorch, TensorFlow, and JAX/Flax
+
+3. **Modular Architecture**: Components can be used independently or combined as needed
+
+4. **Ecosystem Integration**: Native compatibility with popular training frameworks and inference engines
+
+### 📊 Supported Model Types
+
+| Domain | Models | Examples |
+|--------|--------|----------|
+| **🗣️ Natural Language Processing** | 180+ | BERT, GPT, T5, LLaMA, Qwen, Mistral |
+| **👁️ Computer Vision** | 80+ | ViT, DINO, ConvNeXT, YOLOS, DETR |
+| **🎵 Audio Processing** | 20+ | Whisper, Wav2Vec2, SpeechT5, MusicGen |
+| **🌐 Multimodal** | 40+ | CLIP, LLaVA, BLIP, Flamingo, GPT-4V |
+| **📈 Time Series** | 10+ | Time Series Transformer, Informer |
+| **📊 Tabular** | 5+ | TabTransformer, FT-Transformer |
+| **🧬 Specialized** | 25+ | ProtBERT, ESM, Graphormer |
+
+For detailed technical architecture documentation, see our [Technical Architecture Guide](https://huggingface.co/docs/transformers/technical_architecture).
+
 ## Installation
 
 Transformers works with Python 3.9+ [PyTorch](https://pytorch.org/get-started/locally/) 2.1+, [TensorFlow](https://www.tensorflow.org/install/pip) 2.6+, and [Flax](https://flax.readthedocs.io/en/latest/) 0.4.1+.

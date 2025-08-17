@@ -46,7 +46,7 @@ Transformers provides everything you need for inference or training with state-o
 ## Design
 
 > [!TIP]
-> Read our [Philosophy](./philosophy) to learn more about Transformers' design principles.
+> Read our [Philosophy](./philosophy) to learn more about Transformers' design principles and our [Technical Architecture](./technical_architecture) guide for comprehensive implementation details.
 
 Transformers is designed for developers and machine learning engineers and researchers. Its main design principles are:
 
