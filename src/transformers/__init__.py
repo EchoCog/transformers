@@ -288,6 +288,17 @@ _import_structure = {
         "TorchAoConfig",
         "VptqConfig",
     ],
+    "skills": [
+        "AgenticSkill",
+        "SkillRegistry",
+        "SkillExecutionResult",
+        "SkillMetadata",
+        "PipelineSkill",
+        "create_pipeline_skills",
+        "SkillManager",
+        "ChatSkillIntegration",
+        "create_skill_enabled_chat_handler",
+    ],
     "video_utils": [],
 }
 
@@ -861,6 +872,17 @@ if TYPE_CHECKING:
     from .pytorch_utils import Conv1D as Conv1D
     from .pytorch_utils import apply_chunking_to_forward as apply_chunking_to_forward
     from .pytorch_utils import prune_layer as prune_layer
+
+    # Skills
+    from .skills import AgenticSkill as AgenticSkill
+    from .skills import ChatSkillIntegration as ChatSkillIntegration
+    from .skills import PipelineSkill as PipelineSkill
+    from .skills import SkillExecutionResult as SkillExecutionResult
+    from .skills import SkillManager as SkillManager
+    from .skills import SkillMetadata as SkillMetadata
+    from .skills import SkillRegistry as SkillRegistry
+    from .skills import create_pipeline_skills as create_pipeline_skills
+    from .skills import create_skill_enabled_chat_handler as create_skill_enabled_chat_handler
 
     # Tokenization
     from .tokenization_utils import PreTrainedTokenizer as PreTrainedTokenizer
