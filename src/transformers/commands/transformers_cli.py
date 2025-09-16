@@ -23,6 +23,7 @@ from transformers.commands.download import DownloadCommand
 from transformers.commands.env import EnvironmentCommand
 from transformers.commands.run import RunCommand
 from transformers.commands.serving import ServeCommand
+from transformers.commands.skills import SkillsCommand
 
 
 def main_cli():
@@ -44,6 +45,7 @@ def main():
     EnvironmentCommand.register_subcommand(commands_parser)
     RunCommand.register_subcommand(commands_parser)
     ServeCommand.register_subcommand(commands_parser)
+    SkillsCommand.register_subcommand(commands_parser)
     AddNewModelLikeCommand.register_subcommand(commands_parser)
     AddFastImageProcessorCommand.register_subcommand(commands_parser)
 
